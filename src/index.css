@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CRT Effect Styles */
+.crt-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, var(--scanline-intensity, 0.15)) 2px,
+    rgba(0, 0, 0, var(--scanline-intensity, 0.15)) 4px
+  );
+  animation: scanlines 0.1s linear infinite;
+}
+
+.crt-curve {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.crt-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 255, 0.02) 0%,
+    transparent 50%
+  );
+  animation: phosphor-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes phosphor-glow {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Theme CSS Custom Properties */
+:root {
+  /* Default Classic Theme */
+  --theme-primary: #0f380f;
+  --theme-secondary: #306230;
+  --theme-accent: #8bac0f;
+  --theme-board-bg: #0f380f;
+  --theme-board-border: #8bac0f;
+  --theme-grid-lines: #306230;
+  --theme-text: #9bbc0f;
+  --theme-text-secondary: #8bac0f;
+  --theme-text-accent: #306230;
+  
+  /* Piece colors */
+  --theme-piece-I: #9bbc0f;
+  --theme-piece-O: #8bac0f;
+  --theme-piece-T: #8bac0f;
+  --theme-piece-S: #8bac0f;
+  --theme-piece-Z: #8bac0f;
+  --theme-piece-J: #8bac0f;
+  --theme-piece-L: #8bac0f;
+  --theme-piece-ghost: #306230;
+  
+  /* State colors */
+  --theme-success: #8bac0f;
+  --theme-warning: #8bac0f;
+  --theme-error: #306230;
+  --theme-info: #9bbc0f;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--theme-primary);
+  color: var(--theme-text);
+  font-family: 'Courier New', monospace;
+  user-select: none;
+  transition: background-color 0.5s ease, color 0.5s ease;
+} 

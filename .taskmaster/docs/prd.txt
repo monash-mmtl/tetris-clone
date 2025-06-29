@@ -1,0 +1,98 @@
+# Overview
+This is a **solo-mode, retro 8-bit Tetris clone** built with React + TypeScript and run locally via `npm run dev`. It solves a classic "learn-by-doing" challenge: giving you a small yet complete game project to sharpen front-end skills (state management, rendering loops, audio, persistence) while producing a polished portfolio piece. Its value lies in:
+
+Focused scope – only the core Tetris experience, so you can finish and iterate.
+
+Modern QoL touches – ghost piece, hard drop, hold, rebinding, local high scores.
+
+Pixel-perfect nostalgia – authentic 8-bit visuals and chiptune audio that feel delightful.
+
+## Core Features
+| Feature | What it Does | Why It Matters | High-Level How |
+|---------|-------------|----------------|----------------|
+| Gameplay Loop | Runs gravity, rotation, collision, line clearing, scoring, level-up. | Delivers the fun core; correctness makes or breaks the game. | useGameLoop hook ticks at fixed 60 FPS; uses SRS kicks, 7-bag RNG. |
+| Input & Controls | Hard/soft drop, rotate CW/CCW, move, hold, pause; fully rebindable. | Modern ergonomics and accessibility. | Global keyboard listener → dispatch to action reducer; bindings saved in localStorage. |
+| UI / HUD | Board, next-piece queue, hold box, score/level/lines, pause & game-over screens. | Gives players feedback and flow. | React components + Tailwind grid; responsive stacking on < 768 px. |
+| Audio | Looping chiptune BGM; SFX for moves, clears, level-ups, game-over; mute toggle. | Retro immersion and satisfaction. | <audio> elements wrapped by useSound; assets pre-loaded. |
+| Persistence | Top-10 high-score table + key-bindings via localStorage. | Keeps progress between sessions. | Lightweight storage.ts abstraction. |
+| Settings Panel | Rebind keys, toggle ghost piece, mute audio, reset data. | Personalisation & testing playground. | Modal component; writes to persistent store. |
+
+## User Experience
+
+### Personas
+- **"Builder-Gamer" (You)** – Intermediate dev wanting a quick, achievable React side project.
+- **"Friend Tester"** – Casual player you demo to; needs immediate clarity and smooth feel.
+
+### Key User Flows
+- Launch → Start Game → Play → Game-Over → High-Score Entry → Restart
+- Launch → Settings → Rebind Keys / Mute Audio → Save → Start Game
+
+### UI/UX Considerations
+- Retro pixel font + 8-bit palette; minimal latency input.
+- Clear focus ring & high-contrast mode for accessibility.
+- Mobile-friendly layout: board fills width, HUD collapses below.
+
+# Technical Architecture
+
+## System Components
+- **React Front End** – Vite + TypeScript, Tailwind for layout, Zustand for state.
+- **Game Engine Layer** – Pure TS logic (board matrix, piece generator, collision).
+- **Audio Manager** – Simple hook wrapping `<audio>` tags.
+- **Persistence Layer** – Wrapper around `localStorage` for scores & settings.
+
+## Data Models
+- Piece { id, rotationIndex, matrix[4][4] }
+- GameState { board[20][10], activePiece, queue, hold, level, score, status }
+- Settings { keyMap, ghostEnabled, audioMuted }
+- HighScore { initials, score, date }[]
+
+## APIs / Integrations
+None external; asset credits stored in /public/credits.txt.
+
+## Infrastructure Requirements
+Node ≥ 18, npm, modern browser. Runs entirely client-side.
+
+# Development Roadmap
+
+## MVP (Phase 1)
+- Core board rendering & gravity loop
+- Basic controls (fixed keys) + SRS rotation
+- Line clear, scoring, level speed ramp
+- Pause & game-over screens
+- High-score persistence (local)
+
+## Phase 2 – Quality of Life
+- Hold piece, next-queue (3)
+- Hard drop & ghost outline
+- Key-binding UI, Settings modal
+- Chiptune BGM + SFX with mute toggle
+
+## Phase 3 – Polish & Extensibility
+- Scan-line shader / CRT filter toggle
+- Multiple color themes (color-blind safe)
+- Export / import JSON saves
+- Unit tests (Vitest) for engine logic
+- Build script for deployable static bundle
+
+## Logical Dependency Chain
+1. Foundation – Board matrix, piece shapes, renderer.
+2. Interaction – Input handler, collision + movement.
+3. Game Rules – Line detection, scoring, level logic.
+4. UI States – Start / pause / game-over overlays.
+5. Persistence – Local high-score save & load.
+6. QoL Layer – Hold, ghost, hard drop, settings.
+7. Audio & Visual Polish – Add chiptune, shaders, themes.
+
+Each step is atomic, testable, and directly visible so progress feels tangible.
+
+# Risks and Mitigations
+| Risk | Mitigation |
+|------|------------|
+| Complex rotation kicks cause bugs | Implement SRS as unit-tested pure functions; compare with known tables. |
+| Audio lag/stutter on some browsers | Pre-buffer sounds; allow instant mute toggle. |
+| Scope creep beyond solo mode | Freeze roadmap after Phase 2; park ideas in backlog. |
+| Performance drops on older devices | Use requestAnimationFrame; minimize re-renders via canvas or memoized components. |
+
+# Appendix
+- Research – Tetris Guideline (SRS & scoring), Kenney sprite assets, OpenGameArt chiptunes.
+- Key Technical Specs – 60 FPS fixed timestep (~16.67 ms), board 10 × 20, 7-bag RNG, TypeScript strict mode, ESLint + Prettier configs included. 

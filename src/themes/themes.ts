@@ -278,10 +278,49 @@ export const themes: Record<string, Theme> = {
       particles: true,
       crtCurve: false
     }
+  },
+
+  // Blue Classic
+  blueClassic: {
+    id: 'blueClassic',
+    name: 'blueClassic',
+    displayName: '🔵 Blue Classic',
+    description: 'Classic retro style with blue background',
+    colors: {
+      primary: '#0f1c38',
+      secondary: '#2d4a62',
+      accent: '#0f8bac',
+      boardBg: '#0f1c38',
+      boardBorder: '#0f8bac',
+      gridLines: '#2d4a62',
+      text: '#0f9bbc',
+      textSecondary: '#0f8bac',
+      textAccent: '#2d4a62',
+      pieces: {
+        I: '#0f9bbc',
+        O: '#0f8bac', 
+        T: '#0f8bac',
+        S: '#0f8bac',
+        Z: '#0f8bac',
+        J: '#0f8bac',
+        L: '#0f8bac',
+        ghost: '#2d4a62'
+      },
+      success: '#0f8bac',
+      warning: '#0f8bac',
+      error: '#2d4a62',
+      info: '#0f9bbc'
+    },
+    effects: {
+      scanlines: true,
+      glow: true,
+      particles: false,
+      crtCurve: true
+    }
   }
 }
 
-export const defaultTheme = themes.classic
+export const defaultTheme = themes.blueClassic
 
 export function getTheme(themeId: string): Theme {
   return themes[themeId] || defaultTheme

@@ -8,7 +8,7 @@ export function useTheme() {
 
   // Load theme from storage on mount
   useEffect(() => {
-    const savedTheme = storage.getSettings().theme || 'classic'
+    const savedTheme = storage.getSettings().theme || 'blueClassic'
     const theme = getTheme(savedTheme)
     setCurrentTheme(theme)
     applyTheme(theme)

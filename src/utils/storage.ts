@@ -25,7 +25,7 @@ export interface GameSettings {
   ghostPiece: boolean
   showGrid: boolean
   dropSpeed: 'slow' | 'normal' | 'fast'
-  theme: 'classic' | 'neon' | 'arcade' | 'pastel' | 'dark' | 'synthwave' | 'retro'
+  theme: 'classic' | 'neon' | 'arcade' | 'pastel' | 'dark' | 'synthwave' | 'retro' | 'blueClassic'
   keyBindings: {
     moveLeft: string[]
     moveRight: string[]
@@ -69,7 +69,7 @@ const DEFAULT_SETTINGS: GameSettings = {
   ghostPiece: true,
   showGrid: false,
   dropSpeed: 'normal',
-  theme: 'classic',
+  theme: 'blueClassic',
   keyBindings: {
     moveLeft: ['ArrowLeft'],
     moveRight: ['ArrowRight'],

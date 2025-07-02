@@ -73,32 +73,32 @@
 
 /* Theme CSS Custom Properties */
 :root {
-  /* Default Classic Theme */
-  --theme-primary: #0f380f;
-  --theme-secondary: #306230;
-  --theme-accent: #8bac0f;
-  --theme-board-bg: #0f380f;
-  --theme-board-border: #8bac0f;
-  --theme-grid-lines: #306230;
-  --theme-text: #9bbc0f;
-  --theme-text-secondary: #8bac0f;
-  --theme-text-accent: #306230;
+  /* Default Blue Classic Theme */
+  --theme-primary: #0f1c38;
+  --theme-secondary: #2d4a62;
+  --theme-accent: #0f8bac;
+  --theme-board-bg: #0f1c38;
+  --theme-board-border: #0f8bac;
+  --theme-grid-lines: #2d4a62;
+  --theme-text: #0f9bbc;
+  --theme-text-secondary: #0f8bac;
+  --theme-text-accent: #2d4a62;
   
   /* Piece colors */
-  --theme-piece-I: #9bbc0f;
-  --theme-piece-O: #8bac0f;
-  --theme-piece-T: #8bac0f;
-  --theme-piece-S: #8bac0f;
-  --theme-piece-Z: #8bac0f;
-  --theme-piece-J: #8bac0f;
-  --theme-piece-L: #8bac0f;
-  --theme-piece-ghost: #306230;
+  --theme-piece-I: #0f9bbc;
+  --theme-piece-O: #0f8bac;
+  --theme-piece-T: #0f8bac;
+  --theme-piece-S: #0f8bac;
+  --theme-piece-Z: #0f8bac;
+  --theme-piece-J: #0f8bac;
+  --theme-piece-L: #0f8bac;
+  --theme-piece-ghost: #2d4a62;
   
   /* State colors */
-  --theme-success: #8bac0f;
-  --theme-warning: #8bac0f;
-  --theme-error: #306230;
-  --theme-info: #9bbc0f;
+  --theme-success: #0f8bac;
+  --theme-warning: #0f8bac;
+  --theme-error: #2d4a62;
+  --theme-info: #0f9bbc;
 }
 
 body {
